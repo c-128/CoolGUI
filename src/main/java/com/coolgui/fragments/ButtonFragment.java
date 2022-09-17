@@ -16,19 +16,19 @@ public class ButtonFragment extends Fragment {
     }
 
     private final int slot;
-    private final Supplier<ItemStack> itemStackSupplier;
+    private final ItemStack stack;
     private final Consumer<OnClickEvent> onClickConsumer;
 
-    protected ButtonFragment(int slot, Supplier<ItemStack> itemStackSupplier, Consumer<OnClickEvent> onClickConsumer) {
+    protected ButtonFragment(int slot, ItemStack stack, Consumer<OnClickEvent> onClickConsumer) {
         this.slot = slot;
-        this.itemStackSupplier = itemStackSupplier;
+        this.stack = stack;
         this.onClickConsumer = onClickConsumer;
     }
 
     @Override
     public ItemStack[] getItems() {
         ItemStack[] stacks = new ItemStack[slot + 1];
-        stacks[slot] = itemStackSupplier.get();
+        stacks[slot] = stack;
         return stacks;
     }
 
@@ -46,12 +46,12 @@ public class ButtonFragment extends Fragment {
     public static class Builder {
 
         private int slot;
-        private Supplier<ItemStack> itemStackSupplies;
+        private ItemStack stack;
         private Consumer<OnClickEvent> onClickConsumer;
 
         protected Builder() {
             this.slot = 0;
-            this.itemStackSupplies = () -> ItemStack.AIR;
+            this.stack = ItemStack.AIR;
         }
 
         /**
@@ -76,8 +76,8 @@ public class ButtonFragment extends Fragment {
          * Set's the button's item
          * @param item The item which will be shown
          */
-        public Builder item(Supplier<ItemStack> item) {
-            this.itemStackSupplies = item;
+        public Builder item(ItemStack item) {
+            this.stack = item;
             return this;
         }
 
@@ -95,7 +95,7 @@ public class ButtonFragment extends Fragment {
          * @return The built fragment
          */
         public ButtonFragment build() {
-            return new ButtonFragment(slot, itemStackSupplies, onClickConsumer);
+            return new ButtonFragment(slot, stack, onClickConsumer);
         }
     }
 }

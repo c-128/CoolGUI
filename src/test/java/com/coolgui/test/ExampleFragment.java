@@ -16,7 +16,7 @@ public class ExampleFragment extends Fragment {
     protected void render() {
         addFragment(ButtonFragment.builder()
                 .slot(0, 0)
-                .item(() -> ItemStack.builder(page.get() == "home" ? Material.GOLD_BLOCK : Material.GOLD_NUGGET).displayName(Component.text("Home")).build())
+                .item(ItemStack.builder(page.get() == "home" ? Material.GOLD_BLOCK : Material.GOLD_NUGGET).displayName(Component.text("Home")).build())
                 .onClick(onClick -> {
                     page.set("home");
                 })
@@ -24,7 +24,7 @@ public class ExampleFragment extends Fragment {
 
         addFragment(ButtonFragment.builder()
                 .slot(1, 0)
-                .item(() -> ItemStack.builder(page.get() == "settings" ? Material.GOLD_BLOCK : Material.GOLD_NUGGET).displayName(Component.text("Settings")).build())
+                .item(ItemStack.builder(page.get() == "settings" ? Material.GOLD_BLOCK : Material.GOLD_NUGGET).displayName(Component.text("Settings")).build())
                 .onClick(onClick -> {
                     page.set("settings");
                 })
@@ -32,7 +32,7 @@ public class ExampleFragment extends Fragment {
 
         addFragment(ButtonFragment.builder()
                 .slot(2, 0)
-                .item(() -> ItemStack.builder(page.get() == "statistics" ? Material.GOLD_BLOCK : Material.GOLD_NUGGET).displayName(Component.text("Statistics")).build())
+                .item(ItemStack.builder(page.get() == "statistics" ? Material.GOLD_BLOCK : Material.GOLD_NUGGET).displayName(Component.text("Statistics")).build())
                 .onClick(onClick -> {
                     page.set("statistics");
                 })
